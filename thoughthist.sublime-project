@@ -1,0 +1,35 @@
+{
+    "build_systems":
+    [
+        {
+            "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+            "name": "Anaconda Python Builder",
+            "selector": "source.python",
+            "shell_cmd": "\"C:\\Users\\mvanwickle\\Miniconda3\\python.exe\" -u \"$file\""
+        }
+    ],
+    "folders":
+    [
+        {
+            "path": "."
+        }
+    ],
+    "settings":
+    {
+        "TEXroot": "./thoughthist.tex",
+        "output_directory": "./build",
+        "copy_output_on_build": false,
+        "display_bad_boxes": false,
+        "show_error_phantoms": "badboxes",
+        "builder_settings":
+        {
+            "program": "lualatex",
+            "options": "--shell-escape"
+        },
+        "preview_math_latex_compile_program": "lualatex",
+        "windows": {
+            "keep_focus_delay": 0.25
+        },
+        "open_pdf_on_build": false
+    }
+}

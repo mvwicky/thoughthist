@@ -1,0 +1,136 @@
+\documentclass[10pt,titlepage]{book}
+\usepackage[protrusion=true,expansion]{microtype}
+\usepackage{calc}
+
+\setlength{\paperheight}{11.0in}
+\setlength{\paperwidth}{8.5in}
+\usepackage{marginnote}
+\usepackage[
+% showframe,
+showcrop,
+layoutsize={6.3in, 9.2in},   % The dimensions of `Brandeis' by Melvin I. Urofsky (2012)
+layoutoffset={1.1in, 0.9in},
+top=0.7in,
+bottom=1.0in,
+outer=0.6in,
+inner=0.8in,
+marginparwidth=0.5in,
+marginparsep=0.2in]{geometry}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{iftex}
+\ifLuaTeX%
+\usepackage{polyglossia}
+\setmainlanguage[variant=american]{english}
+\usepackage{fontspec}
+\setmainfont{Spectral}[
+    Extension=.ttf,
+    Path=./font/Spectral/,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic,
+    Ligatures=TeX,
+    Numbers={Proportional}
+]
+\setmonofont{Hack}[
+    Extension=.ttf,
+    Path=./font/Hack/,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic,
+    Scale=MatchLowercase,
+    Ligatures=TeX
+]
+\else
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\fi
+
+\usepackage{lettrine}
+
+\usepackage{siunitx}
+
+\usepackage{titling}
+
+% Provides, inter alia, `\LuaLaTeX` command
+\usepackage{metalogo}
+
+% Provides the displayquote environment and other quotation tools
+% TODO: replace uses of `\say` with `\enquote`
+\usepackage{csquotes}
+
+% Puts the Table of Contents in the ToC
+\usepackage{tocbibind}
+
+% Bibiliography Support
+\usepackage[
+backend=biber,
+block=nbpar,
+sorting=ynt,
+citestyle=verbose-trad1,
+ibidpage=true,
+backref=true,
+bibstyle=numeric]{biblatex}
+\addbibresource{thoughthist.bib}
+
+% Makes the first paragraph indented
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{setspace}
+% Footnote utilities
+% TODO: Figure out why `multiple' doesn't work
+\usepackage[%
+stable,     % deals with footnotes in titles
+multiple,   % separates footnotes on the same character
+bottom,     % forces footnotes to the bottom of the page
+flushmargin % puts the footnote marker flush with, but just inside, the margin
+]{footmisc}
+
+% Math Packages
+% ams*: standard American Mathematical Society packages
+% bm: bold text math
+% mathrsfs: provides `\mathscr` command
+% mathtools: misc. math utilities
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bm,mathrsfs,mathtools}
+
+% Provides a bunch of color utilities
+\usepackage[dvipsnames,svgnames]{xcolor}
+% Multicolumn environments
+\usepackage{multicol}
+% Gives the `\nth` command for superscript ordinals
+\usepackage[super,negative]{nth}
+% ?
+\usepackage{textcomp}
+% Image handling (not used as of now)
+\usepackage{graphicx}
+\usepackage{fancyvrb,fancyhdr}
+\usepackage[plain]{fancyref}
+% clearempty makes automatic even pages empty
+% nobottomtitles* moves sections close to the bottom of the page to the next page
+% calcwidth adds the \textwidth length
+\usepackage[clearempty,nobottomtitles*,calcwidth]{titlesec}
+\usepackage[dotinlabels]{titletoc}
+% Package for formatting epigraphs
+\usepackage{epigraph}
+% Package for splitting doc into files
+\usepackage{subfiles}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,graphdrawing,graphs,quotes}
+\usegdlibrary{phylogenetics,layered,trees}
+
+% Packages for typesetting poems and excerpts from screenplays
+\usepackage{verse,dramatist}
+
+% Package for customizing lists
+\usepackage{enumitem}
+% Package allowing for underlining
+\usepackage[normalem]{ulem}
+\usepackage{tabu}
+
+% \usepackage[unicode]{hyperref}
+\usepackage{bookmark}

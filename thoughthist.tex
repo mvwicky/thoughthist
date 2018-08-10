@@ -1,0 +1,112 @@
+\include{pre}
+\include{defines}
+
+\begin{document}
+\frontmatter
+% \phantomsection
+% \markboth{}{Preamble}\addcontentsline{toc}{part}{Preamble}
+
+\pagestyle{empty}
+
+% Title Page
+\begin{titlepage}
+\customtitlepage
+\end{titlepage}
+
+% Post-Title Page
+\posttitlepage
+\newpage
+
+% \onehalfspace
+
+% Make footnotes bolded lowercase
+% \renewcommand{\thefootnote}{\textbf{\Alph{footnote}}}
+\renewcommand{\thefootnote}{\textbf{\arabic{footnote}}}
+
+\pagestyle{fancy}
+
+\titleformat{\chapter}[display]{\LARGE}{}{0cm}{\scshape\uline}
+
+\setlength{\parskip}{0.75\baselineskip}
+
+\subfile{frontmatter}
+
+\setlength{\parskip}{0.2em}
+
+\newpage
+
+\newlength{\headersep}
+\setlength{\headersep}{1em}
+\newcommand{\headerdelim}{}
+\titleformat{\chapter}[frame]{\Large}{\filright\enspace{\Large \chaptertitlename~\thechapter}\enspace}{1cm}{\LARGE\bfseries\filcenter}
+\titleformat{\section}[block]{\Large}{\filleft\thesection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.8pt}]
+\titleformat{\subsection}[block]{\large}{\filleft\thesubsection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.5pt}]
+\titleformat{\subsubsection}[block]{\small}{\filleft\thesubsubsection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.3pt}]
+
+
+\tableofcontents
+\newpage
+
+\setlength{\parskip}{\defparskip}
+
+\setcounter{footnote}{0}
+\setcounter{section}{1}
+
+\renewcommand{\thechapter}{}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+
+\subfile{introduction}
+
+\mainmatter
+\subfile{main/main}
+
+\renewcommand{\headerdelim}{.}
+% Subsection and Subsubsection notation setup
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesection.\thesubsection.\roman{subsubsection}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptertitlename~\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\appendix
+\subfile{appendix/appendix}
+
+\newpage
+\backmatter
+
+\titleformat{\chapter}[hang]{\Large}{\filright\enspace\thechapter\enspace}{2.5cm}{\Large\bfseries\filcenter}
+\phantomsection
+\markright{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+% \printbibliography
+
+% Typeface Page
+
+\clearpage
+\markboth{Typeface}{Typeface}
+\setlength{\parindent}{0em}
+
+\vspace*{\stretch{2}}
+\begin{center}
+{\Large\textbf{About the Typeface}}\ftnote{Description from \url{https://fonts.google.com/specimen/Spectral}}\ftnote{Description from \url{https://github.com/source-foundry/Hack}}
+
+\entryskip
+
+\begin{minipage}{0.5\textwidth}\small
+\textsc{Spectral is a new and versatile serif face available in seven weights of roman and italic, with small caps.
+Spectral offers an efficient, beautiful design that’s intended primarily for text-rich, screen-first environments and long-form reading.}
+
+\entryskip
+
+\texttt{Hack is designed to be a workhorse typeface for source code.
+It has deep roots in the free, open source typeface community and expands upon the contributions of the Bitstream Vera \& DejaVu projects.
+The large x-height + wide aperture + low contrast design make it legible at commonly used source code text sizes with a sweet spot that runs in the 8--14 range}
+\end{minipage}
+\end{center}
+\vspace{\stretch{3}}
+
+\end{document}

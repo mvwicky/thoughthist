@@ -1,0 +1,208 @@
+\hypersetup{%
+colorlinks=false,
+linkbordercolor=white,
+pdfborder=0 0 0,
+bookmarksnumbered=true,
+bookmarksopen=true,
+bookmarksopenlevel=2,
+pdftitle={But I Digress\ldots},
+pdfsubject={philosophy},
+pdfauthor={Michael Van Wickle},
+pdfkeywords={philosophy,life,empathy,knowledge,absurdism,sincerity}}
+
+\sisetup{%
+separate-uncertainty=true,
+group-separator={,},
+group-minimum-digits=4}
+
+\graphicspath{{images/}}
+
+\everymath{\displaystyle}
+
+\newcommand{\ellipsisgap}{0.2em}
+\newcommand{\lips}{\kern\ellipsisgap.\kern\ellipsisgap.\kern\ellipsisgap.\kern\ellipsisgap}
+
+\newlength{\defparskip}
+\setlength{\defparskip}{0.4em}
+
+\DeclareMathOperator{\sinc}{sinc}
+\def\defItem{\itemsep1pt \parsep0pt \parskip0pt}
+\newcommand{\tbul}{\textbullet}
+
+\newcommand{\minus}{\scalebox{0.8}{$-$}}
+\newcommand{\plus}{\scalebox{0.6}{$+$}}
+
+\newcommand{\oneover}[1]{\frac{1}{#1}}
+
+\newcommand{\br}[1]{\ensuremath{\left\{ #1 \right\}}}
+\newcommand{\adpar}[1]{\ensuremath{\left( #1 \right)}}
+
+% Float Setup
+% See pp. 199--200 of `Latex: A Document Preparation System'
+\renewcommand{\topfraction}{0.9}           % Maximum fraction of the page that can be occupied by floats at the top of the page
+\renewcommand{\bottomfraction}{0.9}        % Maxumum fraction of the page that can be occupied by floats at the bottom of the page
+
+\setcounter{topnumber}{2}                  % Maxumum number of floats allowed at the top of a text page
+\setcounter{bottomnumber}{2}               % Maximum number of floats allowed at the bottom of a text page
+\setcounter{totalnumber}{4}                % Maximum number of floats allowed on a single text page
+\setcounter{dbltopnumber}{2}               % topnumber but for double-column pages
+
+\renewcommand{\dbltopfraction}{0.9}        % \topfraction but for double-column pages
+\renewcommand{\textfraction}{0.07}         % Minimum fraction of a text page that must be devoted to text
+
+\renewcommand{\floatpagefraction}{0.7}     % Minimum fraction of a float page that must be occupied by floats
+\renewcommand{\dblfloatpagefraction}{0.7}  % \floatpagefraction for double-column pages
+
+% Semantic commands for different media
+\newcommand{\impword}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\movie}[1]{\textit{#1}}
+\newcommand{\tvshow}[1]{\textit{#1}}
+\newcommand{\tv}[1]{\tvshow{#1}}
+\newcommand{\book}[1]{\textit{#1}}
+\newcommand{\podcast}[1]{\textit{#1}}
+\newcommand{\article}[1]{\textit{#1}}
+
+% Convenience commands for unnumbered divisions
+\newcommand{\unnumchapter}[1]{\cleardoublepage\phantomsection\chapter*{#1}\markright{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\unnumsection}[1]{\section*{#1}\phantomsection\addcontentsline{toc}{section}{#1}\markright{#1}}
+\newcommand{\unnumsubsection}[1]{\subsection*{#1}\phantomsection\addcontentsline{toc}{subsection}{#1}\markright{#1}}
+
+\setlength{\fboxsep}{5pt}
+% Provides a block of text with a box around it
+\newcommand{\textbox}[1]{\vspace{0em}\noindent\hfil\fbox{\parbox[c][1.1\height][c]{0.9\textwidth}{\small\textsc{#1}}}\vspace{1em}}
+\NewDocumentCommand{\textboxsty}{O{0em}O{\textwidth}mO{1em}}{\vspace{#1}\noindent\hfil\fbox{\parbox[c][1.1\height][c]{#2}{\small\textsc{#3}}}\vspace{#4}}
+
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+% \newcommand{\chapterbreak}{\clearpage}
+
+% Some Epigraph Stuff
+% Center epigraphs (default is flushright)
+\renewcommand{\epigraphflush}{center}
+% Make epigraphs smal
+\renewcommand{\epigraphsize}{\small}
+\setlength{\epigraphwidth}{0.8\textwidth}
+% Convenience command for attribution of quotes
+\NewDocumentCommand\attrib{mmm}{\textsc{#1}, \textit{#2} (#3)}
+
+% Count all the epigraphs (for the Random Stats page)
+\newcounter{epicounter}
+\NewDocumentCommand\epi{mm}{\epigraph{#1}{#2}\stepcounter{epicounter}}
+
+% Space between title elements
+\newlength{\titlevspace}
+\setlength{\titlevspace}{1cm}
+
+\newcommand{\booktitle}{Thought}
+\newcommand{\booksubtitle}{An Incomplete History}
+
+\newcommand*{\customtitlepage}{%
+\begin{center}\scshape
+\begin{spacing}{2.0}
+    \vspace{3cm}
+    {\huge\booktitle} \\
+    \vspace*{\titlevspace}
+    {\large\booksubtitle} \\
+\end{spacing}
+{\vspace*{\fill}}
+{\large\bfseries Michael Van Wickle} \\
+\end{center}}
+
+\newcommand*{\posttitlepage}{%
+\begin{center}\small
+\begin{spacing}{2.0}
+\vspace*{\stretch{1}}
+\underline{\texttt{Last Compiled: \today}} \\
+\underline{\texttt{Compiled With} \LuaLaTeX}
+\vspace{\stretch{3}}\end{spacing}
+\end{center}}
+
+\newcommand{\poemauthor}[1]{\nopagebreak{\centering\small\textsc{#1}\par}}
+
+% Margin Setup
+
+% Set margin note size
+\renewcommand*{\marginfont}{\scriptsize}
+
+\renewcommand{\multfootsep}{,}
+\setlength{\footnotesep}{0.9em}
+
+% Counter for footnotes
+\newcounter{footcounter}
+% Footnote command
+\newcommand{\ftnote}[1]{\footnote{#1}\stepcounter{footcounter}}
+% Step footcounter on citations
+\AtEveryCite{\stepcounter{footcounter}}
+
+% Commentary on this particular section
+\newcounter{commcounter}
+\newcommand{\commcolor}{MidnightBlue}
+\newcommand{\commstyle}{\scshape}
+\newcommand{\margincomm}[1]{\marginnote{\singlespace\commstyle\textcolor{\commcolor}{#1}}\stepcounter{commcounter}}
+
+% TODO note
+\newcounter{todocounter}
+\newcommand{\todocolor}{red}
+\newcommand{\todostyle}{\mdseries}
+\newcommand{\margintodo}[1]{\marginnote{\singlespace\todostyle\textcolor{\todocolor}{\textbf{TODO:}\\ #1}}\stepcounter{todocounter}}
+\newcommand{\foottodo}[1]{\textcolor{\todocolor}{\ftnote{\textcolor{\todocolor}{\textbf{TODO:} #1}}}}
+
+% A last modifed date
+% TODO: Make this a lot nicer
+\newcounter{datecounter}
+\newcommand{\datecolor}{Olive}
+\newcommand{\datestyle}{\ttfamily}
+\NewDocumentCommand\fmtdate{mmm}{#1/#2/#3}
+\NewDocumentCommand\fmttime{mmm}{#1:#2 #3}
+\NewDocumentCommand\margindate{mmm}{\reversemarginpar\marginnote{\datestyle\textcolor{\datecolor}{\fmtdate{#1}{#2}{#3}}}\normalmarginpar\stepcounter{datecounter}}
+\NewDocumentCommand\margintime{mmm}{\reversemarginpar\marginnote{\datestyle\textcolor{\datecolor}{\fmttime{#1}{#2}{#3}}}\normalmarginpar\stepcounter{datecounter}}
+
+% A random thought
+\newcounter{thoughtcounter}
+\newcommand{\thoughtcolor}{Sepia}
+\newcommand{\thoughtstyle}{\itshape}
+\newcommand{\marginthought}[1]{\marginnote{\singlespace\thoughtstyle\textcolor{\thoughtcolor}{#1}}\stepcounter{thoughtcounter}}
+
+% Inserts monospaced text inside <>
+\newcommand{\todobrak}[1]{\texttt{\textcolor{\todocolor}{<{#1}>}}}
+
+\newcommand{\wrt}{w.r.t.}
+
+% Skip between two paragraphs that are relevant enough to be in the same section, but a thematic break is still needed
+\newcommand{\entryskip}{\vspace*{2.5\parskip}}
+
+\newcommand{\notescolor}{MidnightBlue}
+\newenvironment{somenotes}[1]{\par\entryskip{\large\centering\noindent\textbf{\textsc{Some Notes On: #1}}}\begin{itemize}[leftmargin=0pt,parsep=1pt,itemsep=1pt]\color{\notescolor}}{\end{itemize}}
+
+\NewDocumentCommand\ddate{O{\the\day}O{\the\month}O{\the\year}}{#1/#2/#3}
+
+% Custom sectioning commands which take a date as an input
+\NewDocumentCommand\sec{mmmmm}{\section{#1}\margindate{#2}{#3}{#4}\label{sec:#5}}
+\NewDocumentCommand\subsec{mmmmm}{\subsection{#1}\margindate{#2}{#3}{#4}\label{subsec:#5}}
+\NewDocumentCommand\subsubsec{mmmmm}{\subsubsection{#1}\margindate{#2}{#3}{#4}\label{subsubsec:#5}}
+
+% Page Header/Footer Formatting/Styling
+\addtolength{\headheight}{\baselineskip}
+\setlength{\footskip}{30pt}
+\renewcommand{\footrulewidth}{0.25pt}
+
+\fancyhf{}
+\renewcommand{\headrule}{}
+\fancyhead{}
+\fancyhead[C]{\nouppercase{\footnotesize\itshape\rightmark}}
+\fancyfoot{}
+\fancyfoot[ER,OL]{\nouppercase{\itshape\leftmark}}
+\fancyfoot[EL,OR]{\thepage}
+\fancyfootoffset{8pt}
+
+\assignpagestyle{\chapter}{fancy}
+
+\pagecolor{WhiteSmoke}
+
+\title{\booktitle}
+\author{Michael J. Van Wickle}
+
+\setcounter{DefaultLines}{3}
