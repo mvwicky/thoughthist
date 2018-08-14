@@ -16,6 +16,7 @@
     ],
     "settings":
     {
+        "font_face": "IBM Plex Mono",
         "TEXroot": "./thoughthist.tex",
         "output_directory": "./build",
         "copy_output_on_build": false,
