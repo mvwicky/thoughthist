@@ -103,16 +103,18 @@ flushmargin % puts the footnote marker flush with, but just inside, the margin
 \usepackage{multicol}
 % Gives the `\nth` command for superscript ordinals
 \usepackage[super,negative]{nth}
-% ?
+% Misc symbols
 \usepackage{textcomp}
 % Image handling (not used as of now)
 \usepackage{graphicx}
 \usepackage{fancyvrb,fancyhdr}
 \usepackage[plain]{fancyref}
-% clearempty makes automatic even pages empty
-% nobottomtitles* moves sections close to the bottom of the page to the next page
-% calcwidth adds the \textwidth length
-\usepackage[clearempty,nobottomtitles*,calcwidth]{titlesec}
+\usepackage[%
+clearempty,       % automatic even pages empty
+nobottomtitles*,  % moves sections close to the bottom of the page to the next page
+calcwidth,        % adds the \titlewidth length
+notocpart*        % \part* doesn't get added to the toc
+]{titlesec}
 \usepackage[dotinlabels]{titletoc}
 % Package for formatting epigraphs
 \usepackage{epigraph}
@@ -132,5 +134,6 @@ flushmargin % puts the footnote marker flush with, but just inside, the margin
 \usepackage[normalem]{ulem}
 \usepackage{tabu}
 
-% \usepackage[unicode]{hyperref}
+\usepackage{blindtext}
+
 \usepackage{bookmark}

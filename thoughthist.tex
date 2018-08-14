@@ -3,8 +3,6 @@
 
 \begin{document}
 \frontmatter
-% \phantomsection
-% \markboth{}{Preamble}\addcontentsline{toc}{part}{Preamble}
 
 \pagestyle{empty}
 
@@ -17,38 +15,9 @@
 \posttitlepage
 \newpage
 
-% \onehalfspace
-
-% Make footnotes bolded lowercase
-% \renewcommand{\thefootnote}{\textbf{\Alph{footnote}}}
-\renewcommand{\thefootnote}{\textbf{\arabic{footnote}}}
-
 \pagestyle{fancy}
-
-\titleformat{\chapter}[display]{\LARGE}{}{0cm}{\scshape\uline}
-
-\setlength{\parskip}{0.75\baselineskip}
-
-\subfile{frontmatter}
-
-\setlength{\parskip}{0.2em}
-
-\newpage
-
-\newlength{\headersep}
-\setlength{\headersep}{1em}
-\newcommand{\headerdelim}{}
-\titleformat{\chapter}[frame]{\Large}{\filright\enspace{\Large \chaptertitlename~\thechapter}\enspace}{1cm}{\LARGE\bfseries\filcenter}
-\titleformat{\section}[block]{\Large}{\filleft\thesection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.8pt}]
-\titleformat{\subsection}[block]{\large}{\filleft\thesubsection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.5pt}]
-\titleformat{\subsubsection}[block]{\small}{\filleft\thesubsubsection}{\headersep}{\bfseries}[\rule{\titlewidth}{0.3pt}]
-
-
-\tableofcontents
-\newpage
-
-\setlength{\parskip}{\defparskip}
-
+% Make footnotes bold numbers
+\renewcommand{\thefootnote}{\textbf{\arabic{footnote}}}
 \setcounter{footnote}{0}
 \setcounter{section}{1}
 
@@ -56,21 +25,29 @@
 \renewcommand{\thesection}{}
 \renewcommand{\thesubsection}{}
 \renewcommand{\thesubsubsection}{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\subfile{frontmatter}
+
+\newpage
+
+\tableofcontents
+\newpage
 
 \subfile{introduction}
 
 \mainmatter
-\subfile{main/main}
 
 \renewcommand{\headerdelim}{.}
 % Subsection and Subsubsection notation setup
 \renewcommand{\thechapter}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesection.\thesubsection.\roman{subsubsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptertitlename~\thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \renewcommand{\thefootnote}{\arabic{footnote}}
+\subfile{main/main}
 
 \appendix
 \subfile{appendix/appendix}
@@ -78,11 +55,9 @@
 \newpage
 \backmatter
 
-\titleformat{\chapter}[hang]{\Large}{\filright\enspace\thechapter\enspace}{2.5cm}{\Large\bfseries\filcenter}
 \phantomsection
-\markright{Bibliography}
-\addcontentsline{toc}{chapter}{Bibliography}
-% \printbibliography
+\addcontentsline{toc}{part}{Bibliography}
+\printbibliography
 
 % Typeface Page
 

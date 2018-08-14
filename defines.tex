@@ -5,7 +5,7 @@ pdfborder=0 0 0,
 bookmarksnumbered=true,
 bookmarksopen=true,
 bookmarksopenlevel=2,
-pdftitle={But I Digress\ldots},
+pdftitle={Thought: An Incomplete History},
 pdfsubject={philosophy},
 pdfauthor={Michael Van Wickle},
 pdfkeywords={philosophy,life,empathy,knowledge,absurdism,sincerity}}
@@ -15,6 +15,7 @@ separate-uncertainty=true,
 group-separator={,},
 group-minimum-digits=4}
 
+% TODO: `images' folder doesn't actually exist
 \graphicspath{{images/}}
 
 \everymath{\displaystyle}
@@ -22,8 +23,10 @@ group-minimum-digits=4}
 \newcommand{\ellipsisgap}{0.2em}
 \newcommand{\lips}{\kern\ellipsisgap.\kern\ellipsisgap.\kern\ellipsisgap.\kern\ellipsisgap}
 
-\newlength{\defparskip}
-\setlength{\defparskip}{0.4em}
+% Set inter-paragrapg skip
+\newlength{\defparskip}            % Default Value
+\setlength{\defparskip}{0.5em}
+\setlength{\parskip}{\defparskip}
 
 \DeclareMathOperator{\sinc}{sinc}
 \def\defItem{\itemsep1pt \parsep0pt \parskip0pt}
@@ -63,6 +66,7 @@ group-minimum-digits=4}
 \newcommand{\article}[1]{\textit{#1}}
 
 % Convenience commands for unnumbered divisions
+\newcommand{\unnumpart}[1]{\cleardoublepage\phantomsection\addcontentsline{toc}{part}{#1}\part*{#1}}
 \newcommand{\unnumchapter}[1]{\cleardoublepage\phantomsection\chapter*{#1}\markright{#1}\addcontentsline{toc}{chapter}{#1}}
 \newcommand{\unnumsection}[1]{\section*{#1}\phantomsection\addcontentsline{toc}{section}{#1}\markright{#1}}
 \newcommand{\unnumsubsection}[1]{\subsection*{#1}\phantomsection\addcontentsline{toc}{subsection}{#1}\markright{#1}}
@@ -76,8 +80,6 @@ group-minimum-digits=4}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}}
 \renewcommand{\subsectionmark}[1]{\markright{#1}}
-
-% \newcommand{\chapterbreak}{\clearpage}
 
 % Some Epigraph Stuff
 % Center epigraphs (default is flushright)
@@ -96,17 +98,19 @@ group-minimum-digits=4}
 \newlength{\titlevspace}
 \setlength{\titlevspace}{1cm}
 
+% Title and Subtitle Macros
 \newcommand{\booktitle}{Thought}
 \newcommand{\booksubtitle}{An Incomplete History}
+\newcommand{\bookfulltitle}{\booktitle : \booksubtitle}
+\title{\bookfulltitle}
+\author{Michael J. Van Wickle}
 
 \newcommand*{\customtitlepage}{%
 \begin{center}\scshape
-\begin{spacing}{2.0}
-    \vspace{3cm}
-    {\huge\booktitle} \\
-    \vspace*{\titlevspace}
-    {\large\booksubtitle} \\
-\end{spacing}
+\vspace{3cm}
+{\huge\booktitle} \\
+\vspace*{\titlevspace}
+{\large\booksubtitle} \\
 {\vspace*{\fill}}
 {\large\bfseries Michael Van Wickle} \\
 \end{center}}
@@ -121,6 +125,8 @@ group-minimum-digits=4}
 \end{center}}
 
 \newcommand{\poemauthor}[1]{\nopagebreak{\centering\small\textsc{#1}\par}}
+
+\NewDocumentCommand{\chapterwithepi}{mmm}{\chapter{#1}\epi{#2}{#3}}
 
 % Margin Setup
 
@@ -175,34 +181,53 @@ group-minimum-digits=4}
 \newcommand{\entryskip}{\vspace*{2.5\parskip}}
 
 \newcommand{\notescolor}{MidnightBlue}
-\newenvironment{somenotes}[1]{\par\entryskip{\large\centering\noindent\textbf{\textsc{Some Notes On: #1}}}\begin{itemize}[leftmargin=0pt,parsep=1pt,itemsep=1pt]\color{\notescolor}}{\end{itemize}}
+\newenvironment{somenotes}[1]{\par\entryskip\color{\notescolor}%
+{\Large\noindent\textbf{\uline{Some Notes On: #1}}}%
+\begin{itemize}[leftmargin=0pt,parsep=1pt,itemsep=1pt]}{\end{itemize}}
 
 \NewDocumentCommand\ddate{O{\the\day}O{\the\month}O{\the\year}}{#1/#2/#3}
 
 % Custom sectioning commands which take a date as an input
-\NewDocumentCommand\sec{mmmmm}{\section{#1}\margindate{#2}{#3}{#4}\label{sec:#5}}
-\NewDocumentCommand\subsec{mmmmm}{\subsection{#1}\margindate{#2}{#3}{#4}\label{subsec:#5}}
-\NewDocumentCommand\subsubsec{mmmmm}{\subsubsection{#1}\margindate{#2}{#3}{#4}\label{subsubsec:#5}}
+\NewDocumentCommand\digsec{mmmmm}{\section{#1}\margindate{#2}{#3}{#4}\label{sec:#5}}
+\NewDocumentCommand\digsubsec{mmmmm}{\subsection{#1}\margindate{#2}{#3}{#4}\label{subsec:#5}}
+\NewDocumentCommand\digsubsubsec{mmmmm}{\subsubsection{#1}\margindate{#2}{#3}{#4}\label{subsubsec:#5}}
 
 % Page Header/Footer Formatting/Styling
 \addtolength{\headheight}{\baselineskip}
 \setlength{\footskip}{30pt}
 \renewcommand{\footrulewidth}{0.25pt}
 
-\fancyhf{}
-\renewcommand{\headrule}{}
-\fancyhead{}
-\fancyhead[C]{\nouppercase{\footnotesize\itshape\rightmark}}
-\fancyfoot{}
-\fancyfoot[ER,OL]{\nouppercase{\itshape\leftmark}}
-\fancyfoot[EL,OR]{\thepage}
+\fancyhf{}                                                    % Clear headers and footers
+\renewcommand{\headrule}{}                                    % No rule in the header
+\fancyhead{}                                                  % Clear headers (just in case I guess)
+\fancyhead[C]{\nouppercase{\footnotesize\itshape\rightmark}}  % Set header style
+\fancyfoot{}                                                  % Clear footers
+\fancyfoot[ER,OL]{\nouppercase{\itshape\leftmark}}            % Set even-right and odd-left footer styles
+\fancyfoot[EL,OR]{\thepage}                                   % Set even-left and odd-right footer styles
 \fancyfootoffset{8pt}
 
 \assignpagestyle{\chapter}{fancy}
-
 \pagecolor{WhiteSmoke}
 
-\title{\booktitle}
-\author{Michael J. Van Wickle}
-
+% Number of lines taken up by a lettrine
 \setcounter{DefaultLines}{3}
+% Number up to subsubsection
+\setcounter{secnumdepth}{3}
+
+% Section Heading Setup
+\newlength{\headersep}
+\setlength{\headersep}{0.5em}
+\newcommand{\headerdelim}{}
+
+% \titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+\titleformat{\part}[display]{\huge}{\filright\enspace\thepart\enspace}{0cm}{\filcenter}
+\titleformat{\chapter}[frame]{\Large}{\filright\enspace\chaptertitlename~\thechapter\enspace}{1cm}{\LARGE\bfseries\filcenter}
+\titleformat{\section}[hang]{\LARGE}{\texttt{\thesection}}{\headersep}{\ttfamily}
+\titleformat{\subsection}[hang]{\Large}{\texttt{\thesubsection}}{\headersep}{\ttfamily}
+\titleformat{\subsubsection}[hang]{\large}{\texttt{\thesubsubsection}}{\headersep}{\ttfamily}
+
+% \titlespacing*{<left>}{<before-sep>}{<after-sep>}[<right-sep>]
+\titlespacing*{\chapter}{0pt}{*2}{*3}
+\titlespacing*{\section}{0pt}{*1}{0pt}
+\titlespacing*{\subsection}{0pt}{*1.5}{0pt}
+\titlespacing*{\subsubsection}{0pt}{*2}{0pt}
