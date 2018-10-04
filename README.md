@@ -1,2 +1,4 @@
-# thoughthist
+# Thoughthist
+
 Thought: An Incomplete History
+
